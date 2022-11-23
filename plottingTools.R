@@ -9,8 +9,6 @@ library(ggsignif)
 mouse_data <- read.csv('141122GBRepeat(IL8).csv')
 
 Boxplot <- function(dataframe){
-  sig_test <- function
-  
   ggplot(data = dataframe, aes(x = Day, y = Corrected.OD655, fill = Treatment)) +
     geom_boxplot() +
     geom_signif(
@@ -24,5 +22,7 @@ Boxplot <- function(dataframe){
          title = 'Effect of SaGA Supplementation on MDP Levels of Fecal Samples',
          fill = 'Treatment') +
     theme_bw()
-         
 }
+
+
+
