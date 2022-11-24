@@ -7,7 +7,7 @@ library(ggplot2)
 library(ggsignif)
 
 mouse_data <- read.csv('141122GBRepeat(IL8).csv')
-standard_curve <- read.csv('141122GBRepeat(IL8).csv')
+standard_curve <- read.csv('standard.csv')
 
 Boxplot <- function(dataframe){
   ggplot(data = dataframe, aes(x = Day, y = Corrected.OD655, fill = Treatment)) +
@@ -19,7 +19,7 @@ Boxplot <- function(dataframe){
     #geom_signif(comparisons = list(c('D14', 'D30')), 
                 #y_position = 0.5, tip_length = 0, vjust = 0.2)+
     labs(x = 'Day Post Treatment',
-         y = 'Response Ratio (650nm)',
+         y = 'Optical Density (650nm)',
          title = 'Effect of SaGA Supplementation on MDP Levels of Fecal Samples',
          fill = 'Treatment') +
     theme_bw()
@@ -28,7 +28,11 @@ Boxplot <- function(dataframe){
 Scatter_quadratic <- function(dataframe){
   ggplot(data = dataframe, aes(x = Conc, y = OD)) +
     geom_point() +
-    geom_smooth(method=lm)
+    stat_smooth(aes(y = OD), method = lm, formula = y~x + I(x^2)) +
+    labs(x = '[MDP] (ng/mL)',
+         y = 'Optical Density (650nm)',
+         title = 'Standard Curve of HekBlue SEAP Activation') +
+    theme_bw()
 }
 
 
