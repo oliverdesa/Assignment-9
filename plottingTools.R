@@ -7,6 +7,7 @@ library(ggplot2)
 library(ggsignif)
 
 mouse_data <- read.csv('141122GBRepeat(IL8).csv')
+standard_curve <- read.csv('141122GBRepeat(IL8).csv')
 
 Boxplot <- function(dataframe){
   ggplot(data = dataframe, aes(x = Day, y = Corrected.OD655, fill = Treatment)) +
@@ -24,5 +25,10 @@ Boxplot <- function(dataframe){
     theme_bw()
 }
 
+Scatter_quadratic <- function(dataframe){
+  ggplot(data = dataframe, aes(x = Conc, y = OD)) +
+    geom_point() +
+    geom_smooth(method=lm)
+}
 
 
