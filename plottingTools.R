@@ -15,12 +15,8 @@ Boxplot <- function(dataframe){
     geom_signif(
       annotations = c('*', '*'),
       y_position = c(0.55, 0.5), xmin = c(0.8, 1.8), xmax = c(1.2, 2.2)) +
-      
-    #geom_signif(comparisons = list(c('D14', 'D30')), 
-                #y_position = 0.5, tip_length = 0, vjust = 0.2)+
     labs(x = 'Day Post Treatment',
          y = 'Optical Density (650nm)',
-         title = 'Effect of SaGA Supplementation on MDP Levels of Fecal Samples',
          fill = 'Treatment') +
     theme_bw()
 }
@@ -30,8 +26,7 @@ Scatter_quadratic <- function(dataframe){
     geom_point() +
     stat_smooth(aes(y = OD), method = lm, formula = y~x + I(x^2)) +
     labs(x = '[MDP] (ng/mL)',
-         y = 'Optical Density (650nm)',
-         title = 'Standard Curve of HekBlue SEAP Activation') +
+         y = 'Optical Density (650nm)') +
     theme_bw()
 }
 
