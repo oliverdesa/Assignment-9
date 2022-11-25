@@ -6,9 +6,6 @@
 library(ggplot2)
 library(ggsignif)
 
-mouse_data <- read.csv('141122GBRepeat(IL8).csv')
-standard_curve <- read.csv('standard.csv')
-
 Boxplot <- function(dataframe){
   ggplot(data = dataframe, aes(x = Day, y = Corrected.OD655, fill = Treatment)) +
     geom_boxplot() +
@@ -19,6 +16,7 @@ Boxplot <- function(dataframe){
          y = 'Optical Density (650nm)',
          fill = 'Treatment') +
     theme_bw()
+  ggsave('Boxplot.pdf', scale = 2)
 }
 
 Scatter_quadratic <- function(dataframe){
@@ -28,6 +26,7 @@ Scatter_quadratic <- function(dataframe){
     labs(x = '[MDP] (ng/mL)',
          y = 'Optical Density (650nm)') +
     theme_bw()
+  ggsave('Scatterplot.pdf', scale = 2)
 }
 
 
