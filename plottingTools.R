@@ -6,6 +6,11 @@
 library(ggplot2)
 library(ggsignif)
 
+csv2db <- function(csv){
+  plotData <- read.csv(csv)
+  return(plotData)
+}
+
 
 # This function takes 2 groups, the Day 14 and Day 30 groups, and then splits them 
 # by treatment type to visualize the differences between the 2 treatments at
